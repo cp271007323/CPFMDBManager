@@ -10,6 +10,7 @@
 #import <FMDB/FMDB.h>
 
 
+
 typedef enum : NSUInteger {
     /**整型*/
     CPFMDB_INTEGER,
