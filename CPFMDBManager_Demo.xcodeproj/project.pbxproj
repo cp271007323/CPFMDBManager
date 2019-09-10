@@ -3,19 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8BF55D7BC4738F20ED85E4F /* Pods_CPFMDBManager_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C372EF30839C9DA9FD05D1D /* Pods_CPFMDBManager_Demo.framework */; };
 		E761CC8923274F54003E8B20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E761CC8823274F54003E8B20 /* AppDelegate.m */; };
 		E761CC8C23274F54003E8B20 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E761CC8B23274F54003E8B20 /* ViewController.m */; };
 		E761CC8F23274F54003E8B20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E761CC8D23274F54003E8B20 /* Main.storyboard */; };
 		E761CC9123274F55003E8B20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E761CC9023274F55003E8B20 /* Assets.xcassets */; };
 		E761CC9423274F55003E8B20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E761CC9223274F55003E8B20 /* LaunchScreen.storyboard */; };
 		E761CC9723274F55003E8B20 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E761CC9623274F55003E8B20 /* main.m */; };
+		E761CCA223274FF9003E8B20 /* CPFMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E761CC9F23274FF9003E8B20 /* CPFMDBManager.m */; };
+		E761CCA323274FF9003E8B20 /* CPFMDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E761CCA023274FF9003E8B20 /* CPFMDBModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A1BBFC00D14F0D0CA8929DB /* Pods-CPFMDBManager_Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPFMDBManager_Demo.debug.xcconfig"; path = "Target Support Files/Pods-CPFMDBManager_Demo/Pods-CPFMDBManager_Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		7C372EF30839C9DA9FD05D1D /* Pods_CPFMDBManager_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CPFMDBManager_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C46FB78237EA597ACB262B4A /* Pods-CPFMDBManager_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPFMDBManager_Demo.release.xcconfig"; path = "Target Support Files/Pods-CPFMDBManager_Demo/Pods-CPFMDBManager_Demo.release.xcconfig"; sourceTree = "<group>"; };
 		E761CC8423274F54003E8B20 /* CPFMDBManager_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CPFMDBManager_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E761CC8723274F54003E8B20 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E761CC8823274F54003E8B20 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +32,10 @@
 		E761CC9323274F55003E8B20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E761CC9523274F55003E8B20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E761CC9623274F55003E8B20 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E761CC9E23274FF9003E8B20 /* CPFMDBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFMDBModel.h; sourceTree = "<group>"; };
+		E761CC9F23274FF9003E8B20 /* CPFMDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFMDBManager.m; sourceTree = "<group>"; };
+		E761CCA023274FF9003E8B20 /* CPFMDBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPFMDBModel.m; sourceTree = "<group>"; };
+		E761CCA123274FF9003E8B20 /* CPFMDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPFMDBManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +43,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8BF55D7BC4738F20ED85E4F /* Pods_CPFMDBManager_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A0CFF5BFD758C589ACEAA07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7A1BBFC00D14F0D0CA8929DB /* Pods-CPFMDBManager_Demo.debug.xcconfig */,
+				C46FB78237EA597ACB262B4A /* Pods-CPFMDBManager_Demo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AC7E8AAB9C468F85060343B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C372EF30839C9DA9FD05D1D /* Pods_CPFMDBManager_Demo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E761CC7B23274F54003E8B20 = {
 			isa = PBXGroup;
 			children = (
+				E761CC9D23274FF9003E8B20 /* CPFMDBManager */,
 				E761CC8623274F54003E8B20 /* CPFMDBManager_Demo */,
 				E761CC8523274F54003E8B20 /* Products */,
+				1A0CFF5BFD758C589ACEAA07 /* Pods */,
+				AC7E8AAB9C468F85060343B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +102,17 @@
 			path = CPFMDBManager_Demo;
 			sourceTree = "<group>";
 		};
+		E761CC9D23274FF9003E8B20 /* CPFMDBManager */ = {
+			isa = PBXGroup;
+			children = (
+				E761CC9E23274FF9003E8B20 /* CPFMDBModel.h */,
+				E761CC9F23274FF9003E8B20 /* CPFMDBManager.m */,
+				E761CCA023274FF9003E8B20 /* CPFMDBModel.m */,
+				E761CCA123274FF9003E8B20 /* CPFMDBManager.h */,
+			);
+			path = CPFMDBManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,9 +120,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E761CC9A23274F55003E8B20 /* Build configuration list for PBXNativeTarget "CPFMDBManager_Demo" */;
 			buildPhases = (
+				2504A131ADA4B98CF8AA2FDA /* [CP] Check Pods Manifest.lock */,
 				E761CC8023274F54003E8B20 /* Sources */,
 				E761CC8123274F54003E8B20 /* Frameworks */,
 				E761CC8223274F54003E8B20 /* Resources */,
+				84C8F18CDA72E8E78729EB02 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,13 +180,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2504A131ADA4B98CF8AA2FDA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CPFMDBManager_Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84C8F18CDA72E8E78729EB02 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CPFMDBManager_Demo/Pods-CPFMDBManager_Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CPFMDBManager_Demo/Pods-CPFMDBManager_Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CPFMDBManager_Demo/Pods-CPFMDBManager_Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E761CC8023274F54003E8B20 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E761CC8C23274F54003E8B20 /* ViewController.m in Sources */,
+				E761CCA223274FF9003E8B20 /* CPFMDBManager.m in Sources */,
 				E761CC9723274F55003E8B20 /* main.m in Sources */,
+				E761CCA323274FF9003E8B20 /* CPFMDBModel.m in Sources */,
 				E761CC8923274F54003E8B20 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +371,7 @@
 		};
 		E761CC9B23274F55003E8B20 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A1BBFC00D14F0D0CA8929DB /* Pods-CPFMDBManager_Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -299,6 +388,7 @@
 		};
 		E761CC9C23274F55003E8B20 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C46FB78237EA597ACB262B4A /* Pods-CPFMDBManager_Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
