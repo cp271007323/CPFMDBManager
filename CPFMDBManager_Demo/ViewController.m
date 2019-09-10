@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <FMDB/FMDB.h>
 
 @interface ViewController ()
 
