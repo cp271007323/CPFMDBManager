@@ -2,8 +2,8 @@
 //  CPFMDBManager.m
 //  CP_FMDB
 //
-//  Created by lk03 on 2017/8/3.
-//  Copyright © 2017年 lk06. All rights reserved.
+//  Created by chenp on 2017/8/3.
+//  Copyright © 2017年 chenp. All rights reserved.
 //
 
 #import "CPFMDBManager.h"
@@ -14,7 +14,6 @@ static NSString *CPParameterValue = @"parameterValue";
 
 @interface CPFMDBManager ()
 @property (nonatomic , strong) NSString         *dbFilePath;
-@property (nonatomic , strong) NSMutableString  *parametersStr;
 @property (nonatomic , strong) NSMutableDictionary<NSString *,CPFMDBModel *> *parametersDic;
 @end
 
@@ -153,8 +152,14 @@ CPFMDBManager static *manager;
 }
 
 #pragma mark - 建表
-- (void)createTable2DBWithTableName:(NSString *)tableName
+- (void)createTable2DBWithTableName:(NSString *)tableName handle:(CPFMDBManagerBlock)handle
 {
+    //外部添加表字段
+    if (handle)
+    {
+        handle(self);
+    }
+    
     //表不存在
     if (![self isExitTable:tableName])
     {
@@ -162,6 +167,8 @@ CPFMDBManager static *manager;
         [manager inDatabase:^(FMDatabase *db) {
             [db executeUpdate:createTable];
         }];
+        //表建成功，移除模型
+        [self.parametersDic removeAllObjects];
     }
     //表存在
     else{
@@ -184,7 +191,8 @@ CPFMDBManager static *manager;
         while ([rs next]) {
             NSInteger count = [rs intForColumn:@"count"];
             NSLog(@"The table count: %li", count);
-            if (count == 1) {
+            if (count == 1)
+            {
                 NSLog(@"存在");
                 isExit = YES;
             }
@@ -364,13 +372,6 @@ CPFMDBManager static *manager;
 
 
 #pragma mark - get
-- (NSMutableString *)parametersStr{
-    if (_parametersStr == nil) {
-        _parametersStr = [NSMutableString string];
-    }
-    return _parametersStr;
-}
-
 -(NSMutableDictionary<NSString *,CPFMDBModel *> *)parametersDic{
     if (_parametersDic == nil) {
         _parametersDic = [NSMutableDictionary dictionary];
