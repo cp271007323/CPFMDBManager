@@ -32,7 +32,10 @@ typedef enum : NSUInteger {
 /**
  建表
  */
-- (void)createTable2DBWithTableName:(NSString *)tableName handle:(CPFMDBManagerBlock)handle;
+- (void)createTable2DBWithTableName:(NSString *)tableName
+                             handle:(CPFMDBManagerBlock)handle
+                            success:(CPFMDBManagerBlock)success
+                               fail:(CPFMDBManagerBlock)fail;
 
 /**
  添加主键自动增量

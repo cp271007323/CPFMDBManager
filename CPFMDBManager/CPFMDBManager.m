@@ -152,7 +152,10 @@ CPFMDBManager static *manager;
 }
 
 #pragma mark - 建表
-- (void)createTable2DBWithTableName:(NSString *)tableName handle:(CPFMDBManagerBlock)handle
+- (void)createTable2DBWithTableName:(NSString *)tableName
+                             handle:(CPFMDBManagerBlock)handle
+                            success:(CPFMDBManagerBlock)success
+                               fail:(CPFMDBManagerBlock)fail
 {
     //外部添加表字段
     if (handle)
@@ -165,7 +168,21 @@ CPFMDBManager static *manager;
     {
         NSString *createTable = [NSString stringWithFormat:@"create table if not exists %@ (%@)",tableName,[self getParameterValue]];
         [manager inDatabase:^(FMDatabase *db) {
-            [db executeUpdate:createTable];
+            BOOL flag =[db executeUpdate:createTable];
+            if(flag)
+            {
+                NSLog(@"建表成功");
+                if (success) {
+                    success(manager);
+                }
+            }
+            else
+            {
+                NSLog(@"建表失败");
+                if (fail) {
+                    fail(manager);
+                }
+            }
         }];
         //表建成功，移除模型
         [self.parametersDic removeAllObjects];
@@ -225,9 +242,9 @@ CPFMDBManager static *manager;
             BOOL worked = [db executeUpdate:alertStr];
             if(worked)
             {
-                NSLog(@"插入成功");
+                NSLog(@"插入新字段成功");
             }else{
-                NSLog(@"插入失败");
+                NSLog(@"插入新字段失败");
             }
         }
     }];
