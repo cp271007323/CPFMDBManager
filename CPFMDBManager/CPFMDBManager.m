@@ -300,6 +300,52 @@ CPFMDBManager static *manager;
     }];
 }
 
+- (NSMutableArray<id> *)queryTheDatabaseForSeveralTables
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:self.dbFilePath];
+
+    if ([db open])
+    {
+        // 根据请求参数查询数据
+        FMResultSet *resultSet = [db executeQuery:@"SELECT * FROM sqlite_master where type='table';"];;
+        
+        NSMutableArray *tableNames = [NSMutableArray array];
+        // 遍历查询结果
+        while (resultSet.next) {
+            
+            NSString *str1 = [resultSet stringForColumnIndex:1];
+            [tableNames addObject:str1];
+            
+        }
+        [tableNames removeObject:@"sqlite_sequence"];
+        return tableNames;
+    }
+    return 0;
+}
+
+- (BOOL)deleteTheDatabaseForTablesWithTableName:(NSString *)tableName
+{
+    FMDatabase *db = [FMDatabase databaseWithPath:self.dbFilePath];
+    
+    if ([db open])
+    {
+        // 根据请求参数查询数据
+        BOOL flag = [db executeUpdate:[NSString stringWithFormat:@"drop table %@;",tableName]];
+        if (flag)
+        {
+            NSLog(@"表 %@ 删除成功",tableName);
+            return YES;
+        }
+        else
+        {
+            NSLog(@"表 %@ 删除失败",tableName);
+            return NO;
+        }
+    }
+    NSLog(@"表- %@ 删除失败",tableName);
+    return NO;
+}
+
 - (NSMutableArray<NSMutableDictionary *> *)queryToTable:(NSString *)table
 {
     NSString *str = [NSString stringWithFormat:@"select * from %@",table];

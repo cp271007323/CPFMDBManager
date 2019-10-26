@@ -85,6 +85,16 @@ typedef enum : NSUInteger {
 - (void)dealData2TableWithExecute:(NSString *)executeStr;
 
 /**
+ 查询数据库中有几张表
+ */
+- (NSMutableArray<id> *)queryTheDatabaseForSeveralTables;
+
+/**
+ 删除表
+ */
+- (BOOL)deleteTheDatabaseForTablesWithTableName:(NSString *)tableName;
+
+/**
  插入
  */
 - (void)insertToTable:(NSString *)table

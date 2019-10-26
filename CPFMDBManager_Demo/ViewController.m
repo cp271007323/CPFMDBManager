@@ -40,10 +40,30 @@
     [[CPFMDBManager manager] addParameter:@"image3" type:CPFMDB_BINARY];
     [[CPFMDBManager manager] createTable2DBWithTableName:@"GXMB3" handle:nil];
     
+    [[CPFMDBManager manager] addPrimaryKeyAutoincrementParameter:@"id4" type:CPFMDB_INTEGER];
+    [[CPFMDBManager manager] addParameter:@"id_time4" type:CPFMDB_TEXT];
+    [[CPFMDBManager manager] addParameter:@"image4" type:CPFMDB_BINARY];
+    [[CPFMDBManager manager] createTable2DBWithTableName:@"GXMB4" handle:nil];
     
     
+    [[CPFMDBManager manager] addPrimaryKeyAutoincrementParameter:@"id4" type:CPFMDB_INTEGER];
+    [[CPFMDBManager manager] addParameter:@"id_time4" type:CPFMDB_TEXT];
+    [[CPFMDBManager manager] addParameter:@"image4" type:CPFMDB_BINARY];
+    [[CPFMDBManager manager] createTable2DBWithTableName:@"GXMB5" handle:nil];
+    
+    
+    [[CPFMDBManager manager] addPrimaryKeyAutoincrementParameter:@"id4" type:CPFMDB_INTEGER];
+    [[CPFMDBManager manager] addParameter:@"id_time4" type:CPFMDB_TEXT];
+    [[CPFMDBManager manager] addParameter:@"image4" type:CPFMDB_BINARY];
+    [[CPFMDBManager manager] createTable2DBWithTableName:@"旅游" handle:nil];
+    
+    
+    [[CPFMDBManager manager] deleteTheDatabaseForTablesWithTableName:@"旅游"];
     
     NSLog(@"%@",NSHomeDirectory());
+    [[[CPFMDBManager manager] queryTheDatabaseForSeveralTables] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"%@",[[CPFMDBManager manager] queryToTable:obj]);
+    }];
     
 }
 
