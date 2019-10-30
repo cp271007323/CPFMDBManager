@@ -317,50 +317,63 @@ CPFMDBManager static *manager;
     }];
 }
 
-- (NSMutableArray<id> *)queryTheDatabaseForSeveralTables
+- (void)queryTheDatabaseForSeveralTablesWithSuccess:(CPFMDBManagerSuccessBlock)Success
+                                               fail:(CPFMDBManagerBlock)fail
 {
-    FMDatabase *db = [FMDatabase databaseWithPath:self.dbFilePath];
-
-    if ([db open])
-    {
-        // 根据请求参数查询数据
-        FMResultSet *resultSet = [db executeQuery:@"SELECT * FROM sqlite_master where type='table';"];;
-        
-        NSMutableArray *tableNames = [NSMutableArray array];
-        // 遍历查询结果
-        while (resultSet.next) {
+    [manager inDatabase:^(FMDatabase * _Nonnull db) {
+        if ([db open])
+        {
+            // 根据请求参数查询数据
+            FMResultSet *resultSet = [db executeQuery:@"SELECT * FROM sqlite_master where type='table';"];;
             
-            NSString *str1 = [resultSet stringForColumnIndex:1];
-            [tableNames addObject:str1];
-            
+            NSMutableArray *tableNames = [NSMutableArray array];
+            // 遍历查询结果
+            while (resultSet.next) {
+                
+                NSString *str1 = [resultSet stringForColumnIndex:1];
+                [tableNames addObject:str1];
+                
+            }
+            [tableNames removeObject:@"sqlite_sequence"];
+            if (Success)
+            {
+                Success(manager,tableNames);
+            }
         }
-        [tableNames removeObject:@"sqlite_sequence"];
-        return tableNames;
-    }
-    return 0;
+        if (fail)
+        {
+            fail(manager);
+        }
+    }];
 }
 
-- (BOOL)deleteTheDatabaseForTablesWithTableName:(NSString *)tableName
+- (void)deleteTheDatabaseForTablesWithTableName:(NSString *)tableName
+                                        success:(CPFMDBManagerBlock)Success
+                                           fail:(CPFMDBManagerBlock)fail;
 {
-    FMDatabase *db = [FMDatabase databaseWithPath:self.dbFilePath];
-    
-    if ([db open])
-    {
-        // 根据请求参数查询数据
-        BOOL flag = [db executeUpdate:[NSString stringWithFormat:@"drop table %@;",tableName]];
-        if (flag)
+    [manager inDatabase:^(FMDatabase * _Nonnull db) {
+        if ([db open])
         {
-            NSLog(@"表 %@ 删除成功",tableName);
-            return YES;
+            // 根据请求参数查询数据
+            BOOL flag = [db executeUpdate:[NSString stringWithFormat:@"drop table %@;",tableName]];
+            if (flag)
+            {
+                NSLog(@"表 %@ 删除成功",tableName);
+                if (Success)
+                {
+                    Success(manager);
+                }
+            }
+            else
+            {
+                NSLog(@"表 %@ 删除失败",tableName);
+                if (fail)
+                {
+                    fail(manager);
+                }
+            }
         }
-        else
-        {
-            NSLog(@"表 %@ 删除失败",tableName);
-            return NO;
-        }
-    }
-    NSLog(@"表- %@ 删除失败",tableName);
-    return NO;
+    }];
 }
 
 - (NSMutableArray<NSMutableDictionary *> *)queryToTable:(NSString *)table

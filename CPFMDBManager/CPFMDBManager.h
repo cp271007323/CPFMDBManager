@@ -12,6 +12,7 @@
 @class CPFMDBManager;
 
 typedef void (^CPFMDBManagerBlock)(CPFMDBManager *manger);
+typedef void (^CPFMDBManagerSuccessBlock)(CPFMDBManager *manger,id obj);
 
 typedef enum : NSUInteger {
     /**整型*/
@@ -90,12 +91,12 @@ typedef enum : NSUInteger {
 /**
  查询数据库中有几张表
  */
-- (NSMutableArray<id> *)queryTheDatabaseForSeveralTables;
+- (void)queryTheDatabaseForSeveralTablesWithSuccess:(CPFMDBManagerSuccessBlock)Success fail:(CPFMDBManagerBlock)fail;
 
 /**
  删除表
  */
-- (BOOL)deleteTheDatabaseForTablesWithTableName:(NSString *)tableName;
+- (void)deleteTheDatabaseForTablesWithTableName:(NSString *)tableName success:(CPFMDBManagerSuccessBlock)Success fail:(CPFMDBManagerBlock)fail;
 
 /**
  插入
