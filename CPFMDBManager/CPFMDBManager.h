@@ -96,7 +96,9 @@ typedef enum : NSUInteger {
 /**
  删除表
  */
-- (void)deleteTheDatabaseForTablesWithTableName:(NSString *)tableName success:(CPFMDBManagerSuccessBlock)Success fail:(CPFMDBManagerBlock)fail;
+- (void)deleteTheDatabaseForTablesWithTableName:(NSString *)tableName
+                                        success:(CPFMDBManagerBlock)Success
+                                           fail:(CPFMDBManagerBlock)fail;
 
 /**
  插入

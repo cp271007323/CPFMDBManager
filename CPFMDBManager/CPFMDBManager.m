@@ -396,7 +396,7 @@ CPFMDBManager static *manager;
         while ([resultSet next]) {
             NSMutableDictionary *dic = [NSMutableDictionary dictionary];
             [keys enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                id value = [resultSet objectForColumnName:obj];
+                id value = [resultSet objectForColumn:obj];
                 [dic setObject:value forKey:obj];
             }];
             [objects addObject:dic];
@@ -428,7 +428,7 @@ CPFMDBManager static *manager;
         while ([resultSet next]) {
             NSMutableDictionary *dic = [NSMutableDictionary dictionary];
             [keys enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                id value = [resultSet objectForColumnName:obj];
+                id value = [resultSet objectForColumn:obj];
                 [dic setObject:value forKey:obj];
             }];
             [objects addObject:dic];
